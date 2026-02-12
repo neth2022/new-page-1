@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Complete your purchase securely with PayPal, Stripe, or Razorpay.">
+    <title>Checkout - DigiStore</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">DigiStore</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="features.html">Products</a></li>
+                <li><a href="pricing.html">Shop</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Checkout Section -->
+    <section style="min-height: 80vh; padding-top: 120px;">
+        <div class="container" style="max-width: 900px;">
+            <div class="section-header" style="text-align: center; margin-bottom: 3rem;">
+                <h1>Checkout</h1>
+                <p>Complete your purchase securely</p>
+            </div>
+
+            <div class="grid grid-2" style="gap: 2rem; align-items: start;">
+                <!-- Order Summary -->
+                <div class="glass-card" style="position: sticky; top: 100px;">
+                    <h2 style="margin-bottom: 1.5rem; font-size: 1.5rem;">Order Summary</h2>
+
+                    <div id="orderDetails">
+                        <div
+                            style="padding: 1rem; background: rgba(255,255,255,0.05); border-radius: 8px; margin-bottom: 1rem;">
+                            <h3 id="productName" style="font-size: 1.2rem; margin-bottom: 0.5rem;">Loading...</h3>
+                            <p id="productDescription" style="opacity: 0.8; font-size: 0.9rem;">Please wait...</p>
+                        </div>
+
+                        <div style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1rem; margin-top: 1rem;">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                <span>Price:</span>
+                                <span id="productPrice">$0.00</span>
+                            </div>
+                            <div
+                                style="display: flex; justify-content: space-between; margin-bottom: 0.5rem; opacity: 0.7;">
+                                <span>Processing Fee:</span>
+                                <span>Included</span>
+                            </div>
+                            <div
+                                style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1rem; margin-top: 1rem; display: flex; justify-content: space-between; font-size: 1.3rem; font-weight: bold;">
+                                <span>Total:</span>
+                                <span id="totalPrice" class="text-gradient">$0.00</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div
+                        style="margin-top: 1.5rem; padding: 1rem; background: rgba(34, 197, 94, 0.1); border-radius: 8px; border: 1px solid rgba(34, 197, 94, 0.3);">
+                        <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
+                            <span style="font-size: 1.2rem;">✅</span>
+                            <strong>Instant Delivery</strong>
+                        </div>
+                        <p style="font-size: 0.9rem; opacity: 0.9;">Product key will be sent to your email immediately
+                            after payment.</p>
+                    </div>
+                </div>
+
+                <!-- Payment Methods -->
+                <div class="glass-card">
+                    <h2 style="margin-bottom: 1.5rem; font-size: 1.5rem;">Select Payment Method</h2>
+
+                    <!-- Payment Method Tabs -->
+                    <div
+                        style="display: flex; gap: 1rem; margin-bottom: 2rem; border-bottom: 2px solid rgba(255,255,255,0.1);">
+                        <button class="payment-tab active" data-method="paypal"
+                            style="padding: 1rem 1.5rem; background: none; border: none; color: white; cursor: pointer; border-bottom: 3px solid transparent; transition: all 0.3s;">
+                            <strong>PayPal</strong>
+                        </button>
+                        <button class="payment-tab" data-method="stripe"
+                            style="padding: 1rem 1.5rem; background: none; border: none; color: white; cursor: pointer; border-bottom: 3px solid transparent; transition: all 0.3s; opacity: 0.6;">
+                            <strong>Card</strong>
+                        </button>
+                        <button class="payment-tab" data-method="crypto"
+                            style="padding: 1rem 1.5rem; background: none; border: none; color: white; cursor: pointer; border-bottom: 3px solid transparent; transition: all 0.3s; opacity: 0.6;">
+                            <strong>Crypto</strong>
+                        </button>
+                    </div>
+
+                    <!-- PayPal Payment -->
+                    <div id="paypal-payment" class="payment-method active">
+                        <div style="text-align: center; margin-bottom: 2rem;">
+                            <img src="https://www.paypalobjects.com/webstatic/mktg/logo/pp_cc_mark_111x69.jpg"
+                                alt="PayPal" style="height: 50px; margin: 0 auto;">
+                            <p style="margin-top: 1rem; opacity: 0.8;">Pay securely with PayPal</p>
+                        </div>
+
+                        <div id="paypal-button-container" style="margin-top: 2rem;"></div>
+
+                        <!-- Manual PayPal Form (Fallback) -->
+                        <div id="paypal-manual-form" style="display: none;">
+                            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+                                <input type="hidden" name="cmd" value="_xclick">
+                                <input type="hidden" name="business" id="paypal-email"
+                                    value="your-paypal-email@example.com">
+                                <input type="hidden" name="item_name" id="paypal-item-name" value="">
+                                <input type="hidden" name="amount" id="paypal-amount" value="">
+                                <input type="hidden" name="currency_code" value="USD">
+                                <input type="hidden" name="return" value="https://yourwebsite.com/confirmation.html">
+                                <input type="hidden" name="cancel_return" value="https://yourwebsite.com/pricing.html">
+
+                                <button type="submit" class="btn btn-primary"
+                                    style="width: 100%; padding: 1rem; font-size: 1.1rem;">
+                                    Pay with PayPal
+                                </button>
+                            </form>
+                        </div>
+
+                        <div
+                            style="margin-top: 2rem; padding: 1rem; background: rgba(59, 130, 246, 0.1); border-radius: 8px; border: 1px solid rgba(59, 130, 246, 0.3);">
+                            <p style="font-size: 0.9rem;">
+                                <strong>💡 Note:</strong> You'll be redirected to PayPal to complete your payment
+                                securely. After payment, you'll receive your product key via email.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Card Payment (Stripe) -->
+                    <div id="stripe-payment" class="payment-method" style="display: none;">
+                        <div style="text-align: center; margin-bottom: 2rem;">
+                            <div style="font-size: 2rem; margin-bottom: 1rem;">💳</div>
+                            <p style="opacity: 0.8;">Pay with Credit or Debit Card</p>
+                        </div>
+
+                        <div style="background: rgba(255,255,255,0.05); padding: 2rem; border-radius: 12px;">
+                            <div style="margin-bottom: 1.5rem;">
+                                <label style="display: block; margin-bottom: 0.5rem; font-size: 0.9rem;">Card
+                                    Number</label>
+                                <input type="text" placeholder="1234 5678 9012 3456"
+                                    style="width: 100%; padding: 0.75rem; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; color: white; font-size: 1rem;">
+                            </div>
+
+                            <div
+                                style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem;">
+                                <div>
+                                    <label style="display: block; margin-bottom: 0.5rem; font-size: 0.9rem;">Expiry
+                                        Date</label>
+                                    <input type="text" placeholder="MM/YY"
+                                        style="width: 100%; padding: 0.75rem; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; color: white; font-size: 1rem;">
+                                </div>
+                                <div>
+                                    <label style="display: block; margin-bottom: 0.5rem; font-size: 0.9rem;">CVV</label>
+                                    <input type="text" placeholder="123"
+                                        style="width: 100%; padding: 0.75rem; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; color: white; font-size: 1rem;">
+                                </div>
+                            </div>
+
+                            <div style="margin-bottom: 1.5rem;">
+                                <label style="display: block; margin-bottom: 0.5rem; font-size: 0.9rem;">Cardholder
+                                    Name</label>
+                                <input type="text" placeholder="John Doe"
+                                    style="width: 100%; padding: 0.75rem; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; color: white; font-size: 1rem;">
+                            </div>
+
+                            <button class="btn btn-primary" style="width: 100%; padding: 1rem; font-size: 1.1rem;"
+                                onclick="alert('Stripe integration requires a backend server. Please use PayPal for now or contact us to set up Stripe.')">
+                                Pay Now
+                            </button>
+                        </div>
+
+                        <div
+                            style="margin-top: 2rem; padding: 1rem; background: rgba(251, 191, 36, 0.1); border-radius: 8px; border: 1px solid rgba(251, 191, 36, 0.3);">
+                            <p style="font-size: 0.9rem;">
+                                <strong>⚠️ Demo Mode:</strong> Card payment requires backend setup. Please use PayPal or
+                                contact us to enable card payments.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Crypto Payment -->
+                    <div id="crypto-payment" class="payment-method" style="display: none;">
+                        <div style="text-align: center; margin-bottom: 2rem;">
+                            <div style="font-size: 2rem; margin-bottom: 1rem;">₿</div>
+                            <p style="opacity: 0.8;">Pay with Cryptocurrency</p>
+                        </div>
+
+                        <div
+                            style="background: rgba(255,255,255,0.05); padding: 2rem; border-radius: 12px; text-align: center;">
+                            <p style="margin-bottom: 1.5rem;">We accept:</p>
+                            <div
+                                style="display: flex; justify-content: center; gap: 2rem; margin-bottom: 2rem; font-size: 2rem;">
+                                <span title="Bitcoin">₿</span>
+                                <span title="Ethereum">Ξ</span>
+                                <span title="USDT">₮</span>
+                            </div>
+
+                            <button class="btn btn-primary" style="width: 100%; padding: 1rem; font-size: 1.1rem;"
+                                onclick="alert('Crypto payment requires manual processing. Please contact us via the Contact page to arrange crypto payment.')">
+                                Contact for Crypto Payment
+                            </button>
+                        </div>
+
+                        <div
+                            style="margin-top: 2rem; padding: 1rem; background: rgba(168, 85, 247, 0.1); border-radius: 8px; border: 1px solid rgba(168, 85, 247, 0.3);">
+                            <p style="font-size: 0.9rem;">
+                                <strong>💎 Crypto Payments:</strong> Contact our team to get wallet address and complete
+                                your purchase with cryptocurrency.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Security Badges -->
+                    <div style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1);">
+                        <div
+                            style="display: flex; justify-content: center; gap: 2rem; align-items: center; opacity: 0.7; flex-wrap: wrap;">
+                            <div style="text-align: center;">
+                                <div style="font-size: 1.5rem;">🔒</div>
+                                <p style="font-size: 0.8rem; margin-top: 0.25rem;">Secure SSL</p>
+                            </div>
+                            <div style="text-align: center;">
+                                <div style="font-size: 1.5rem;">✅</div>
+                                <p style="font-size: 0.8rem; margin-top: 0.25rem;">Verified</p>
+                            </div>
+                            <div style="text-align: center;">
+                                <div style="font-size: 1.5rem;">🛡️</div>
+                                <p style="font-size: 0.8rem; margin-top: 0.25rem;">Protected</p>
+                            </div>
+                            <div style="text-align: center;">
+                                <div style="font-size: 1.5rem;">💯</div>
+                                <p style="font-size: 0.8rem; margin-top: 0.25rem;">Money-Back</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Back to Shop -->
+            <div style="text-align: center; margin-top: 3rem;">
+                <a href="pricing.html" style="color: var(--primary); text-decoration: none; opacity: 0.8;">
+                    ← Back to Shop
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3 class="logo" style="margin-bottom: 1rem;">DigiStore</h3>
+                <p>Your trusted marketplace for premium digital products.</p>
+            </div>
+
+            <div class="footer-section">
+                <h3>Support</h3>
+                <ul class="footer-links">
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Refund Policy</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Legal</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 DigiStore. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="payment.js"></script>
+</body>
+
+</html>

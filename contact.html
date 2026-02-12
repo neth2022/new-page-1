@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Get in touch with our team. We're here to help you succeed.">
+    <title>Contact - DigiStore</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">DigiStore</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="features.html">Products</a></li>
+                <li><a href="pricing.html">Shop</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="pricing.html" class="btn btn-primary" style="padding: 0.75rem 1.5rem;">Shop Now</a></li>
+            </ul>
+            <div class="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero gradient-bg" style="min-height: 50vh;">
+        <div class="hero-content">
+            <h1>Get in Touch</h1>
+            <p>Have questions? We'd love to hear from you. Send us a message and we'll respond as soon as possible.</p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section style="padding-top: 0; margin-top: -2rem;">
+        <div class="container">
+            <div class="grid grid-2" style="gap: 3rem;">
+                <!-- Contact Form -->
+                <div class="glass-card">
+                    <h2 style="margin-bottom: 1.5rem;">Send us a Message</h2>
+                    <form id="contact-form">
+                        <div class="form-group">
+                            <label for="name">Full Name *</label>
+                            <input type="text" id="name" name="name" required placeholder="John Doe">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" name="email" required placeholder="john@example.com">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="subject">Subject *</label>
+                            <input type="text" id="subject" name="subject" required placeholder="How can we help?">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Message *</label>
+                            <textarea id="message" name="message" required
+                                placeholder="Tell us more about your inquiry..."></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
+                    </form>
+                </div>
+
+                <!-- Contact Information -->
+                <div>
+                    <div class="glass-card" style="margin-bottom: 2rem;">
+                        <div style="display: flex; align-items: flex-start; gap: 1rem;">
+                            <div class="feature-icon" style="width: 60px; height: 60px; font-size: 1.5rem; margin: 0;">
+                                📧</div>
+                            <div>
+                                <h3 style="margin-bottom: 0.5rem;">Email Us</h3>
+                                <p style="margin: 0;">support@digisub.com</p>
+                                <p style="margin: 0; font-size: 0.9rem;">We'll respond within 24 hours</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="glass-card" style="margin-bottom: 2rem;">
+                        <div style="display: flex; align-items: flex-start; gap: 1rem;">
+                            <div class="feature-icon" style="width: 60px; height: 60px; font-size: 1.5rem; margin: 0;">
+                                💬</div>
+                            <div>
+                                <h3 style="margin-bottom: 0.5rem;">Live Chat</h3>
+                                <p style="margin: 0;">Available 24/7</p>
+                                <p style="margin: 0; font-size: 0.9rem;">Get instant help from our team</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="glass-card" style="margin-bottom: 2rem;">
+                        <div style="display: flex; align-items: flex-start; gap: 1rem;">
+                            <div class="feature-icon" style="width: 60px; height: 60px; font-size: 1.5rem; margin: 0;">
+                                📞</div>
+                            <div>
+                                <h3 style="margin-bottom: 0.5rem;">Call Us</h3>
+                                <p style="margin: 0;">+1 (555) 123-4567</p>
+                                <p style="margin: 0; font-size: 0.9rem;">Mon-Fri, 9am-6pm EST</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="glass-card">
+                        <div style="display: flex; align-items: flex-start; gap: 1rem;">
+                            <div class="feature-icon" style="width: 60px; height: 60px; font-size: 1.5rem; margin: 0;">
+                                📍</div>
+                            <div>
+                                <h3 style="margin-bottom: 0.5rem;">Visit Us</h3>
+                                <p style="margin: 0;">123 Digital Avenue</p>
+                                <p style="margin: 0;">San Francisco, CA 94102</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Support Options -->
+    <section style="background: var(--bg-secondary);">
+        <div class="container">
+            <div class="section-header">
+                <h2>Other Ways to Get Help</h2>
+            </div>
+
+            <div class="grid grid-3">
+                <div class="glass-card feature-card">
+                    <div class="feature-icon">📚</div>
+                    <h3>Knowledge Base</h3>
+                    <p>Browse our comprehensive documentation and tutorials.</p>
+                    <a href="#" style="color: var(--primary-light); text-decoration: none; font-weight: 600;">Visit
+                        Knowledge Base →</a>
+                </div>
+
+                <div class="glass-card feature-card">
+                    <div class="feature-icon">🎥</div>
+                    <h3>Video Tutorials</h3>
+                    <p>Watch step-by-step guides and learn at your own pace.</p>
+                    <a href="#" style="color: var(--primary-light); text-decoration: none; font-weight: 600;">Watch
+                        Tutorials →</a>
+                </div>
+
+                <div class="glass-card feature-card">
+                    <div class="feature-icon">👥</div>
+                    <h3>Community Forum</h3>
+                    <p>Connect with other users and share experiences.</p>
+                    <a href="#" style="color: var(--primary-light); text-decoration: none; font-weight: 600;">Join
+                        Community →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section>
+        <div class="container">
+            <div class="section-header">
+                <h2>Quick Answers</h2>
+                <p>Find answers to common questions</p>
+            </div>
+
+            <div class="grid grid-2">
+                <div class="glass-card">
+                    <h3 style="font-size: 1.1rem;">How do I reset my password?</h3>
+                    <p>Click on "Forgot Password" on the login page and follow the instructions sent to your email.</p>
+                </div>
+
+                <div class="glass-card">
+                    <h3 style="font-size: 1.1rem;">How do I upgrade my plan?</h3>
+                    <p>Go to your account settings and select "Billing" to view and change your subscription plan.</p>
+                </div>
+
+                <div class="glass-card">
+                    <h3 style="font-size: 1.1rem;">Can I get a refund?</h3>
+                    <p>Yes, we offer a 30-day money-back guarantee for all new subscriptions.</p>
+                </div>
+
+                <div class="glass-card">
+                    <h3 style="font-size: 1.1rem;">How do I cancel my subscription?</h3>
+                    <p>You can cancel anytime from your account settings. Your access continues until the end of the
+                        billing period.</p>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 2rem;">
+                <a href="#"
+                    style="color: var(--primary-light); text-decoration: none; font-weight: 600; font-size: 1.1rem;">View
+                    All FAQs →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="gradient-bg" style="text-align: center;">
+        <div class="container">
+            <h2 style="margin-bottom: 1rem;">Ready to Get Started?</h2>
+            <p style="font-size: 1.2rem; margin-bottom: 2rem;">
+                Join thousands of satisfied subscribers today.
+            </p>
+            <a href="pricing.html" class="btn btn-primary btn-large">Start Free Trial</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3 class="logo" style="margin-bottom: 1rem;">DigiStore</h3>
+                <p>Your trusted marketplace for premium digital products.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook">📘</a>
+                    <a href="#" aria-label="Twitter">🐦</a>
+                    <a href="#" aria-label="Instagram">📷</a>
+                    <a href="#" aria-label="LinkedIn">💼</a>
+                </div>
+            </div>
+
+            <div class="footer-section">
+                <h3>Shop</h3>
+                <ul class="footer-links">
+                    <li><a href="features.html">Products</a></li>
+                    <li><a href="pricing.html">Shop</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Roadmap</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Company</h3>
+                <ul class="footer-links">
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Legal</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Cookie Policy</a></li>
+                    <li><a href="#">GDPR</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 DigiStore. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
